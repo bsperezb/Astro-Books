@@ -1,0 +1,32 @@
+# Archivo .editorconfig para el proyecto de Astro
+
+# Aplicar estas configuraciones a todos los archivos
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+indent_style = space
+indent_size = 2
+trim_trailing_whitespace = true
+
+# Configuración para archivos JSON, YAML, y Markdown
+[*.{json,yaml,yml,md}]
+indent_size = 2
+
+# Configuración para archivos HTML, CSS, JavaScript, y Astro
+[*.{html,css,js,ts,astro}]
+indent_size = 2
+
+# Configuración para archivos de configuración
+[*.{env,editorconfig}]
+indent_size = 2
+
+# Configuración para archivos de texto y markdown
+[*.md]
+max_line_length = off
+trim_trailing_whitespace = false
+
+# Incluir archivos simbólicos
+[*.syml]
+indent_style = space
+indent_size = 2
