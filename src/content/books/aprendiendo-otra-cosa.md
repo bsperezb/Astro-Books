@@ -1,7 +1,7 @@
 ---
 title: Aprendiendo otra cosa
 author: Brayan Perez
-img: portadaLibro.jpg
+img: portadaLibro.webp
 date: '2024-04-21'
 description: 'Esto es una descripcion'
 readtime: 224

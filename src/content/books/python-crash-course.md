@@ -1,7 +1,7 @@
 ---
 title: Python Crash Course, 3rd
 author: Erick
-img: python-course.jpg
+img: python-course.webp
 date: '2022-01-12'
 description: 'Introduction to Programming'
 readtime: 300

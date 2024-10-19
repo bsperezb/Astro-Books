@@ -31,17 +31,19 @@ console.log(books);
 								<article class="flex">
 									<a
 										href={`libros/${slug}`}
-										target="_blank"
 										class="mb2- xl:mb-0 transition hover:scale-110"
 									>
 										<img
-											src={`/public/${img}`}
+											transition:name={`img-${slug}`}
+											src={`/${img}`}
 											class="mr-5 w-48 rounded-lg"
-											alt="title"
+											alt={title}
 										/>
 									</a>
 									<div class="flex flex-col justify-center">
-										<h2 class="mb-2 text-2xl font-bold leading-tight text-blanck">
+										<h2 
+            								transition:name={`title-${slug}`}
+											class="mb-2 text-2xl font-bold leading-tight text-blanck">
 											{title}
 										</h2>
 										<p class="mb-4 text-gray-300 max-w-sm">

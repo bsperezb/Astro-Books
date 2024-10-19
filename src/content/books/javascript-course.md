@@ -1,7 +1,7 @@
 ---
 title: Javascript Crash Course, 2ed
 author: Roberto Melendez
-img: javascript-course.jpeg
+img: javascript-course.webp
 date: '2022-01-12'
 description: 'Introduction to Programming'
 readtime: 300
