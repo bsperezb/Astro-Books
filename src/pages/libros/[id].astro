@@ -1,7 +1,9 @@
 ---
 import { getCollection, render } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
-
+import  config from '../../../astro.config.mjs'; // Ajusta la ruta según tu estructura
+// console.log(config.base)
+const base = config.base
 export async function getStaticPaths() {
     const books = await getCollection("books");
     return books.map((book) => ({
@@ -20,17 +22,17 @@ const { Content } = await render(book);
 <Layout title={`${title} - Dev Books`}>
     <div class="flex gap-12">
         <aside class="flex flex-col items-center gab-4">
-            <a href="/" class="pb-2 hover:underline opacity-70"> {`<- `} Regresar</a>
+            <a href={base} class="pb-2 hover:underline opacity-70"> {`<- `} Regresar</a>
             <img
                 transition:name={`img-${slug}`}
-                src={`/${img}`}
+                src={`${config.base}/${img}`}
                 alt={`${title}`}
                 class="rounded w-72 h-auto"
             />
             <!-- Enlace para comprar -->
         </aside>
         <main class="max-w-2xl">
-            <h1 
+            <h1
             transition:name={`title-${slug}`}
             class="text-4xl font-bold mb-4">{title}</h1>
             <div class="prose prose-invert">

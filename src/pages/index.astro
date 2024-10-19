@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
+import  config from '../../astro.config.mjs'; // Ajusta la ruta según tu estructura
 
 const books = await getCollection("books");
 console.log(books);
@@ -35,13 +36,13 @@ console.log(books);
 									>
 										<img
 											transition:name={`img-${slug}`}
-											src={`/${img}`}
+											src={`${config.base}/${img}`}
 											class="mr-5 w-48 rounded-lg"
 											alt={title}
 										/>
 									</a>
 									<div class="flex flex-col justify-center">
-										<h2 
+										<h2
             								transition:name={`title-${slug}`}
 											class="mb-2 text-2xl font-bold leading-tight text-blanck">
 											{title}
