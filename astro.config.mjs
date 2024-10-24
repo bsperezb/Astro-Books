@@ -9,8 +9,8 @@ import vercel from '@astrojs/vercel/serverless';
 export default defineConfig({
   output: 'server',
   integrations: [tailwind()],
-  site: 'https://bsperezb.github.io',
-  base: '/Astro-Books/',
+  // site: 'https://bsperezb.github.io',
+  // base: '/Astro-Books/',
 
   env: {
     schema:{
