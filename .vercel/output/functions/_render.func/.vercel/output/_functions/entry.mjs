@@ -1,6 +1,6 @@
 import { renderers } from './renderers.mjs';
 import { s as serverEntrypointModule } from './chunks/_@astrojs-ssr-adapter_BRPlOEDL.mjs';
-import { manifest } from './manifest_B1rEBH5b.mjs';
+import { manifest } from './manifest_CYSjhciA.mjs';
 import { createExports } from '@astrojs/vercel/serverless/entrypoint';
 
 const serverIslandMap = new Map([
@@ -24,7 +24,7 @@ const _manifest = Object.assign(manifest, {
     middleware: () => import('./_noop-middleware.mjs')
 });
 const _args = {
-    "middlewareSecret": "51fe0b3e-8e8a-4a6e-9d6e-319ecea01017",
+    "middlewareSecret": "5da87691-9a40-491f-a015-109da10cf7ba",
     "skewProtection": false
 };
 const _exports = createExports(_manifest, _args);
