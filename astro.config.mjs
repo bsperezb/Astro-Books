@@ -3,12 +3,15 @@ import { defineConfig, envField } from 'astro/config';
 
 import tailwind from '@astrojs/tailwind';
 
+import vercel from '@astrojs/vercel/serverless';
+
 // https://astro.build/config
 export default defineConfig({
   output: 'server',
   integrations: [tailwind()],
   site: 'https://bsperezb.github.io',
   base: '/Astro-Books/',
+
   env: {
     schema:{
       SHOW_BUY_BUTTON: envField.boolean({
@@ -21,5 +24,7 @@ export default defineConfig({
         access: 'public'
       })
     }
-  }
+  },
+
+  adapter: vercel()
 });
