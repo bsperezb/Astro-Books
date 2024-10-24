@@ -4,7 +4,8 @@ import { getCollection } from "astro:content";
 import  config from '../../astro.config.mjs'; // Ajusta la ruta según tu estructura
 
 const books = await getCollection("books");
-console.log(books);
+export const prerender = true
+// console.log(books);
 ---
 
 <Layout title="Dev Books, libros Para Programadores">

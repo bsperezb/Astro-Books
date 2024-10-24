@@ -1,0 +1,10 @@
+---
+import { restoreFocus } from "astro/virtual-modules/transitions-swap-functions.js";
+import { SCORE_API_ENDPOINT } from "astro:env/server";
+
+  const res = await fetch(SCORE_API_ENDPOINT)
+  const scoreValue = await res.text()
+---
+<span class="text-xs" id="score">
+  Puntuacion de : {scoreValue}/5
+</span>

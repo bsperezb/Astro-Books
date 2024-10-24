@@ -1,15 +1,18 @@
 ---
 import { getCollection, render } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
-import  config from '../../../astro.config.mjs'; // Ajusta la ruta según tu estructura
+import config from "../../../astro.config.mjs"; // Ajusta la ruta según tu estructura
+import { SHOW_BUY_BUTTON } from "astro:env/server";
+import BookScore from "../../components/BookScore.astro";
+import BuyButton from "../../components/BuyButton.astro";
 // console.log(config.base)
-const base = config.base
+const base = config.base;
 export async function getStaticPaths() {
-    const books = await getCollection("books");
-    return books.map((book) => ({
-        params: { id: book.slug },
-        props: { book },
-    }));
+  const books = await getCollection("books");
+  return books.map((book) => ({
+    params: { id: book.slug },
+    props: { book },
+  }));
 }
 
 const { book } = Astro.props;
@@ -17,27 +20,44 @@ const { slug, data } = book;
 const { title, author, img, readtime, description, buy } = data;
 
 const { Content } = await render(book);
+
+export const prerender = true;
 ---
 
 <Layout title={`${title} - Dev Books`}>
-    <div class="flex gap-12">
-        <aside class="flex flex-col items-center gab-4">
-            <a href={base} class="pb-2 hover:underline opacity-70"> {`<- `} Regresar</a>
-            <img
-                transition:name={`img-${slug}`}
-                src={`${config.base}/${img}`}
-                alt={`${title}`}
-                class="rounded w-72 h-auto"
-            />
-            <!-- Enlace para comprar -->
-        </aside>
-        <main class="max-w-2xl">
-            <h1
-            transition:name={`title-${slug}`}
-            class="text-4xl font-bold mb-4">{title}</h1>
-            <div class="prose prose-invert">
-                <Content />
-            </div>
-        </main>
-    </div>
+  <div class="flex gap-12">
+    <aside class="flex flex-col items-center gap-4">
+      <a href={base} class="pb-2 hover:underline opacity-70">
+        {`<- `} Regresar</a
+      >
+      <img
+        transition:name={`img-${slug}`}
+        src={`${config.base}/${img}`}
+        alt={`${title}`}
+        class="rounded w-72 h-auto"
+      />
+      <BookScore server:defer id={slug}>
+        <span slot="fallback" class="text-xs opacity-70" id="score">
+          Cargando Puntuacion ...
+        </span>
+      </BookScore>
+
+      {
+        SHOW_BUY_BUTTON && <BuyButton server:defer buy={buy}></BuyButton>
+      }
+      <!-- Enlace para comprar -->
+    </aside>
+    <main class="max-w-2xl">
+      <h1 transition:name={`title-${slug}`} class="text-4xl font-bold mb-4">
+        {title}
+      </h1>
+      <div class="prose prose-invert">
+        <Content />
+      </div>
+    </main>
+  </div>
 </Layout>
+
+<style></style>
+
+<script></script>
